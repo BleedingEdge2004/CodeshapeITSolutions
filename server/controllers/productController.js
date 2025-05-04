@@ -23,6 +23,31 @@ export const createProduct = async (req, res) => {
 
 // PRODUCT: Get all (with category filter & search)
 export const getProducts = async (req, res) => {
+    try {
+        const { category, prescription, excludeExpired } = req.query;
+        const filter = {};
+
+        // Convert category name to ObjectId
+        if (category) {
+            const foundCategory = await Category.findOne({ name: category });
+            if (foundCategory) {
+                filter.category = foundCategory._id;
+            } else {
+                return res.status(404).json({ message: 'Category not found' });
+            }
+        }
+        if (prescription === 'true') filter.requiresPrescription = true;
+        if (prescription === 'false') filter.requiresPrescription = false;
+
+        if (excludeExpired === 'true') {
+            filter.expiryDate = { $gt: new Date() };
+        }
+
+        const products = await Product.find(filter).populate('category');
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ message: 'Error fetching products', error: err.message });
+    }
     const { search, category } = req.query;
     const filter = {};
     if (search) filter.name = { $regex: search, $options: 'i' };
