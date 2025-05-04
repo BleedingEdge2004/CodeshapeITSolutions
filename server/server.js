@@ -1,18 +1,21 @@
 // This code sets up a basic Express.js server with MongoDB connection and routes for handling product and authentication-related requests. It also includes middleware for parsing JSON bodies and enabling CORS (Cross-Origin Resource Sharing) for the server.
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
 // Middleware to enable CORS and parse JSON bodies
+
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 // Middleware to parse JSON bodies
-const authRoutes = require('./routes/authRoutes');
-const productRoutes = require('./routes/productRoutes');
+import authRoutes from './routes/authRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 // Middleware to parse URL-encoded bodies
-app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
 
 // Middleware to handle authentication routes
 app.get("/", (req, res) => res.send("API Running"));
