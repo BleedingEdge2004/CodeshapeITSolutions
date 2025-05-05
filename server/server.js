@@ -13,9 +13,11 @@ app.use(express.json());
 // Middleware to parse JSON bodies
 import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 // Middleware to parse URL-encoded bodies
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 
 // Middleware to handle authentication routes
 app.get("/", (req, res) => res.send("API Running"));
