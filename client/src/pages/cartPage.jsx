@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { CartContext } from '../context/cartContext.js';
+import { CartContext } from '../context/cartContext.js'; // Adjust the import path as necessary
 import { useNavigate } from 'react-router-dom';
 // import { useCart } from '../context/cartContext.js'; // Uncomment if using useCart hook
 const CartPage = () => {

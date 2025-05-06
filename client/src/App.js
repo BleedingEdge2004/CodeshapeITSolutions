@@ -4,7 +4,7 @@ import HomePage from './pages/homePage.jsx';
 import CartPage from './pages/cartPage.jsx';
 import { CartProvider } from './context/cartContext.js';
 
-const App = () => {
+function App()  {
     return (
         <CartProvider>
             <Router>
