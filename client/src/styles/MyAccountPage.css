@@ -1,0 +1,50 @@
+/* Container styling for the account page */
+.account-page {
+  padding: 40px;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Heading for the section */
+.account-page h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* Block for user details */
+.account-info {
+  background-color: #f9f9f9;
+  padding: 20px 25px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  border: 1px solid #e0e0e0;
+}
+
+/* Buttons for actions like editing profile, logout etc. */
+.account-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.account-actions button {
+  flex: 1;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.account-actions button:hover {
+  background-color: #0056b3;
+}

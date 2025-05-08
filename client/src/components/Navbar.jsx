@@ -1,21 +1,21 @@
 // src/components/Navbar.jsx
-import React from 'react';
 
-// A simple navigation bar to switch between pages
+import React from "react";
+import "../styles/Navbar.css"; // <- Import the CSS
+
 const Navbar = () => {
     return (
-        <nav className="navbar bg-white shadow-md px-6 py-3">
-            {/* Dummy categories, can be dynamic later */}
-            <ul className="flex gap-6 font-medium text-gray-700 text-sm">
-                <li className="cursor-pointer hover:text-blue-600">All Medicines</li>
-                <li className="cursor-pointer hover:text-blue-600">Wellness</li>
-                <li className="cursor-pointer hover:text-blue-600">Personal Care</li>
-                <li className="cursor-pointer hover:text-blue-600">Ayurveda</li>
-                <li className="cursor-pointer hover:text-blue-600">Fitness</li>
+        <nav className="navbar">
+            {/* Horizontal category links */}
+            <ul>
+                <li>All Medicines</li>
+                <li>Wellness</li>
+                <li>Personal Care</li>
+                <li>Ayurveda</li>
+                <li>Fitness</li>
             </ul>
         </nav>
     );
 };
-
 
 export default Navbar;

@@ -1,0 +1,58 @@
+/* Wrapper for the entire product section */
+.product-list {
+  padding: 40px 30px;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+/* Section heading */
+.product-list h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* Responsive product grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+/* Single product card */
+.product-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  color: #222;
+}
+
+/* Hover effect */
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Product image */
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Product name */
+.product-card h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+/* Price styling */
+.product-card p {
+  font-weight: bold;
+  color: #007bff;
+}

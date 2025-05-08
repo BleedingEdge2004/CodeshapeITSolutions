@@ -11,7 +11,7 @@ const AddToCartButton = ({ productId }) => {
             const res = await axios.post(
                 'http://localhost:5000/api/cart/add',
                 { productId },
-                { headers: { Authorization:` Bearer ${token}` } }
+                { headers: { Authorization: ` Bearer ${token}` } }
             );
             dispatch({ type: 'UPDATE_CART', payload: res.data.cart });
         } catch (error) {
@@ -19,7 +19,11 @@ const AddToCartButton = ({ productId }) => {
         }
     };
 
-    return <button onClick={handleAdd}>Add to Cart</button>;
+    return (
+        <button className="add-to-cart-btn" onClick={handleAdd}>
+            Add to Cart
+        </button>
+    );
 };
 
 export default AddToCartButton;

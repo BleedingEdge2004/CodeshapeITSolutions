@@ -1,0 +1,69 @@
+/* Overall footer layout */
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 40px 30px;
+  font-family: Arial, sans-serif;
+}
+
+/* Grid layout for four columns */
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Footer headings */
+.footer-columns h3,
+.footer-columns h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Links inside footer */
+.footer-columns ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-columns ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-columns ul li a:hover {
+  color: #007bff;
+}
+
+/* Newsletter input + button */
+.footer-columns input[type="email"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.footer-columns button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Bottom copyright */
+.footer-bottom {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 30px;
+}

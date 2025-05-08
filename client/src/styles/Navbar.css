@@ -1,0 +1,29 @@
+/* Navbar container */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+  padding: 12px 30px;
+  font-family: Arial, sans-serif;
+}
+
+/* Horizontal link layout */
+.navbar ul {
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Link styles */
+.navbar li {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.navbar li:hover {
+  color: #007bff;
+}

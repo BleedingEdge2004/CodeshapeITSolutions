@@ -39,7 +39,7 @@ const CartPage = () => {
                                 </p>
                                 <button onClick={() => removeFromCart(item.product._id)}>Remove</button>
                             </div>
-                        </div>
+                        </div> 
                     ))}
                     <hr />
                     <h3>Total: ₹{getCartTotal()}</h3>

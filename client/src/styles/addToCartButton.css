@@ -1,0 +1,18 @@
+/* Button for adding to cart */
+.add-to-cart-btn {
+    padding: 10px 16px;
+    background-color: #28a745; /* green tone for action */
+    color: white;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  /* Hover effect for better feedback */
+  .add-to-cart-btn:hover {
+    background-color: #218838;
+  }
