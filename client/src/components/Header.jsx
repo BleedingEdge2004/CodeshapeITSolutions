@@ -54,6 +54,7 @@ const Header = () => {
                     <Link to="/login" >
                         <FaUser />
                         <b>LogIn</b>
+                        <b>MyAccount</b>
                     </Link>
                 </div>
 

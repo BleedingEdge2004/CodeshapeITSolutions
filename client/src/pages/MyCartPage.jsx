@@ -1,56 +1,53 @@
 // src/pages/MyCartPage.jsx
 
 import React from "react";
-import "../styles/MyCartPage.css"; // Import the CSS
+import { useCart } from "../context/cartContext.js"; // Access cart state/actions
+import "../styles/MyCartPage.css";
 
 const MyCartPage = () => {
-    // Static cart items just for layout cloning (to be replaced with useCart() logic)
-    const cartItems = [
-        {
-            id: 1,
-            name: "Paracetamol 500mg",
-            image: "/images/paracetamol.jpg",
-            price: 49.99,
-            quantity: 2,
-        },
-        {
-            id: 2,
-            name: "Vitamin C Tablets",
-            image: "/images/vitamin-c.jpg",
-            price: 89.99,
-            quantity: 1,
-        },
-    ];
+    const { cart, incrementQuantity, decrementQuantity, removeFromCart } = useCart();
+
+    // Calculate subtotal from all cart items
+    const subtotal = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
 
     return (
         <div className="cart-page">
             <h2>My Cart</h2>
 
-            {/* Table-like layout for cart items */}
-            <div className="cart-items">
-                {cartItems.map((item) => (
-                    <div key={item.id} className="cart-item">
-                        <img src={item.image} alt={item.name} />
-                        <div className="cart-item-info">
-                            <h4>{item.name}</h4>
-                            <p>₹{item.price}</p>
-                            <p>Quantity: {item.quantity}</p>
-                        </div>
-                        <div className="cart-item-actions">
-                            <button>-</button>
-                            <button>+</button>
-                            <button className="remove-btn">Remove</button>
-                        </div>
+            {/* If cart is empty */}
+            {cart.length === 0 ? (
+                <p>Your cart is empty.</p>
+            ) : (
+                <>
+                    {/* Cart Items */}
+                    <div className="cart-items">
+                        {cart.map((item) => (
+                            <div key={item.product._id} className="cart-item">
+                                <img src={item.product.image} alt={item.product.name} />
+                                <div className="cart-item-info">
+                                    <h4>{item.product.name}</h4>
+                                    <p>₹{item.product.price}</p>
+                                    <p>Quantity: {item.quantity}</p>
+                                </div>
+                                <div className="cart-item-actions">
+                                    <button onClick={() => decrementQuantity(item.product._id)}>-</button>
+                                    <button onClick={() => incrementQuantity(item.product._id)}>+</button>
+                                    <button className="remove-btn" onClick={() => removeFromCart(item.product._id)}>
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
 
-            {/* Order Summary */}
-            <div className="cart-summary">
-                <h3>Order Summary</h3>
-                <p>Subtotal: ₹189.97</p>
-                <button className="checkout-btn">Proceed to Checkout</button>
-            </div>
+                    {/* Order Summary */}
+                    <div className="cart-summary">
+                        <h3>Order Summary</h3>
+                        <p>Subtotal: ₹{subtotal.toFixed(2)}</p>
+                        <button className="checkout-btn">Proceed to Checkout</button>
+                    </div>
+                </>
+            )}
         </div>
     );
 };

@@ -1,18 +1,41 @@
 // src/pages/ProductDetailsPage.jsx
 
-import React from "react";
-import "../styles/ProductDetailsPage.css"; // Importing custom styles
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
+// Import styles
+import "../styles/ProductDetailsPage.css";
+
+// Import cart and favorites context
+import { useCart } from "../context/cartContext.js";
+import { useFavorites } from "../context/favoritesContext.js";
 
 const ProductDetailsPage = () => {
-    // Dummy product data to display visually (replace with dynamic data later)
-    const product = {
-        name: "Paracetamol 500mg",
-        image: "/images/paracetamol.jpg",
-        description: "Effective for pain relief and fever reduction.",
-        price: 49.99,
-        stock: "In Stock",
-        category: "Pain Relief",
-    };
+    const { id } = useParams(); // Get product ID from URL
+    const [product, setProduct] = useState(null);
+
+    const { addToCart } = useCart();
+    const { toggleFavorite, isFavorite } = useFavorites();
+
+    // Fetch product details on mount
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(`/api/products / ${id}`);
+                setProduct(response.data);
+            } catch (error) {
+                console.error("Failed to fetch product details", error);
+            }
+        };
+
+        fetchProduct();
+    }, [id]);
+
+    // If product is not yet loaded
+    if (!product) {
+        return <div>Loading product details...</div>;
+    }
 
     return (
         <div className="product-details">
@@ -24,17 +47,26 @@ const ProductDetailsPage = () => {
             {/* Product Information */}
             <div className="product-info">
                 <h1>{product.name}</h1>
-                <p className="category">{product.category}</p>
+                <p className="category">{product.category?.name || "Uncategorized"}</p>
                 <p className="description">{product.description}</p>
                 <p className="price">₹{product.price}</p>
-                <p className={`stock ${product.stock === "In Stock" ? "in-stock" : "out-of-stock"}`}>
-                    {product.stock}
+                <p
+                    className={`stock ${product.stock && product.stock > 0 ? "in-stock" : "out-of-stock"
+                        }`}
+                >
+                    {product.stock && product.stock > 0 ? "In Stock" : "Out of Stock"}
                 </p>
 
-                {/* Add to Cart Button (no logic yet) */}
-                <button className="add-to-cart-btn">Add to Cart</button>
+                {/* Add to Cart & Favorites Buttons */}
+                <div className="product-action-buttons">
+                    <button onClick={() => addToCart(product)}>Add to Cart</button>
+
+                    <button onClick={() => toggleFavorite(product)}>
+                        {isFavorite(product) ? "Remove from Favorites" : "Add to Favorites"}
+                    </button>
+                </div>
             </div>
-        </div >
+        </div>
     );
 };
 
