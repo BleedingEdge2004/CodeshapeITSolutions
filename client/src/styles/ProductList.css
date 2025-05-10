@@ -21,6 +21,7 @@
   gap: 1.5rem;
 }
 
+
 /* Individual product card */
 .product-card {
   background: white;
@@ -28,6 +29,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 1rem;
   text-align: center;
+  text-decoration: none;
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;

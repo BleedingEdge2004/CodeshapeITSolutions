@@ -48,6 +48,12 @@ export const CartProvider = ({ children }) => {
 
     // Add product to cart
     const addToCart = (product, quantity = 1) => {
+        const token = localStorage.getItem("token");
+        if(!token){
+            //if user is not logged in, redirect to login page
+            window.location.href = "/login";
+            return;
+        }
         const exists = cart.find((item) => item.product._id === product._id);
         let updatedCart;
 

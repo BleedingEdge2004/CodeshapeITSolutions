@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // Import styles
 import "../styles/ProductList.css";
@@ -43,17 +44,20 @@ const ProductList = () => {
                 <p className="no-products-msg">No products available.</p>
             ) : (
                 <div className="product-grid">
-                    {products.map((product) => (
-                        <div key={product._id} className="product-card">
-                            <img src={product.image} alt={product.name} />
-                            <h3>{product.name}</h3>
-                            <p>₹{product.price}</p>
-                            <div className="product-buttons">
-                                <button onClick={() => addToCart(product)}>Add to Cart</button>
-                                <button onClick={() => toggleFavorite(product)}>
-                                    {isFavorite(product._id) ? "Unfavorite" : "Favorite"}
-                                </button>
-                            </div>
+                        {products.map((product) => (
+                            // Each product card
+                            <div key={product._id} className="product-card">
+                                <Link to={`/product/${product._id}`} className="product-link">
+                                    <img src={product.image} alt={product.name} />
+                                    <h3>{product.name}</h3>
+                                    <p>₹{product.price}</p>
+                                </Link>
+                                <div className="product-buttons">
+                                    <button onClick={() => addToCart(product)}>Add to Cart</button>
+                                    <button onClick={() => toggleFavorite(product)}>
+                                        {isFavorite(product._id) ? "Unfavorite" : "Favorite"}
+                                    </button>
+                                </div>
                         </div>
                     ))}
                 </div>

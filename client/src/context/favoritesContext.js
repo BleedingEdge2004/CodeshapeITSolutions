@@ -31,6 +31,12 @@ export const FavoritesProvider = ({ children }) => {
 
     // Toggle favorite (adds if not present, removes if already favorited)
     const toggleFavorite = async (product) => {
+        const token = localStorage.getItem("token");
+        if(!token){
+            //if user is not logged in, redirect to login page
+            window.location.href = "/login";
+            return;
+        }
         try {
             await axios.post(
                 "/api/user/favorites",

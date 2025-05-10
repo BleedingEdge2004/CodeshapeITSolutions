@@ -1,32 +1,47 @@
-/* Main cart page container */
+/* Entire cart page wrapper */
 .cart-page {
   padding: 40px 30px;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f2f4f8;
+  min-height: 100vh;
 }
 
 /* Page title */
 .cart-page h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #222;
   margin-bottom: 30px;
 }
 
-/* Individual cart items container */
+/* Layout: cart items on left, summary on right */
+.cart-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* All cart items */
 .cart-items {
+  flex: 2;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-bottom: 40px;
 }
 
-/* Single cart item layout */
+/* Individual cart item */
 .cart-item {
   display: flex;
   align-items: center;
-  background-color: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.cart-item:hover {
+  transform: translateY(-4px);
 }
 
 /* Product image */
@@ -35,27 +50,31 @@
   height: 100px;
   object-fit: contain;
   margin-right: 20px;
+  border-radius: 6px;
 }
 
-/* Item details section */
+/* Product name and details */
 .cart-item-info {
   flex: 1;
 }
 
 .cart-item-info h4 {
   font-size: 1.1rem;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
+  color: #333;
 }
 
 .cart-item-info p {
-  font-size: 14px;
-  color: #444;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 4px;
 }
 
-/* Quantity + remove actions */
+/* Action buttons: +, -, Remove */
 .cart-item-actions {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 6px;
 }
 
@@ -64,34 +83,60 @@
   font-size: 13px;
   border: none;
   border-radius: 4px;
-  background-color: #eaeaea;
+  background-color: #e2e6ea;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
+.cart-item-actions button:hover {
+  background-color: #cfd8df;
+}
+
+/* Remove button in red */
 .remove-btn {
   background-color: #dc3545;
   color: white;
 }
 
-/* Summary section */
+.remove-btn:hover {
+  background-color: #b02a37;
+}
+
+/* Summary card on right */
 .cart-summary {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 300px;
+  flex: 1;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+  height: fit-content;
 }
 
 .cart-summary h3 {
-  margin-bottom: 15px;
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: #222;
 }
 
+.cart-summary p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+/* Checkout button */
 .checkout-btn {
   background-color: #007bff;
   color: white;
-  padding: 10px 16px;
+  padding: 12px;
+  font-size: 15px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 10px;
   width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #0056b3;
 }

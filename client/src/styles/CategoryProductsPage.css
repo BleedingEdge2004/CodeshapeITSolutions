@@ -6,7 +6,8 @@
 .category-products-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  text-decoration: none;
+  justify-content: space-between;
   gap: 20px;
   margin-top: 20px;
 }

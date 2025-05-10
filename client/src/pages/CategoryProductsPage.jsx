@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+
 import "../styles/CategoryProductsPage.css";
 
 const CategoryProductsPage = () => {
@@ -8,12 +9,13 @@ const CategoryProductsPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
+
     // Fetch products by category from backend
     useEffect(() => {
         const fetchProducts = async () => {
             try {
                 setLoading(true);
-                const res = await axios.get(`/api/products?category=${ name }`);
+                const res = await axios.get(`/api/products?category=${name}`);
                 setProducts(res.data);
                 setLoading(false);
             } catch (err) {
@@ -36,11 +38,11 @@ const CategoryProductsPage = () => {
             ) : (
                 <div className="category-products-grid">
                     {products.map((product) => (
-                        <div className="product-card" key={product._id}>
+                        <Link to={`/product/${product._id}`} className="product-link">
                             <img src={product.image} alt={product.name} />
-                            <h4>{product.name}</h4>
+                            <h3>{product.name}</h3>
                             <p>₹{product.price}</p>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             )}
