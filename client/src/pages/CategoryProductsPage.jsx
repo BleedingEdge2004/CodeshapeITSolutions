@@ -1,45 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Get category name from URL
+import { useParams } from "react-router-dom";
 import axios from "axios";
-
-import "../styles/CategoryProductsPage.css"; // Styling for product grid
+import "../styles/CategoryProductsPage.css";
 
 const CategoryProductsPage = () => {
-    const { name } = useParams(); 
+    const { name } = useParams(); // e.g. "Pain Relief"
     const [products, setProducts] = useState([]);
-    const [filtered, setFiltered] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    // Fetch all products from backend once
+    // Fetch products by category from backend
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/products");
+                setLoading(true);
+                const res = await axios.get(`/api/products?category=${ name }`);
                 setProducts(res.data);
+                setLoading(false);
             } catch (err) {
-                console.error("Failed to load products:", err);
+                console.error("Error loading category products:", err);
+                setLoading(false);
             }
         };
 
         fetchProducts();
-    }, []);
-
-    // Filter by category on change
-    useEffect(() => {
-        const match = products.filter(
-            (p) => p.category?.name?.toLowerCase().includes(name.toLowerCase())
-        );
-        setFiltered(match);
-    }, [name, products]);
+    }, [name]);
 
     return (
         <div className="category-products-page">
-            <h2>Products in "{name.replace("-", " ")}"</h2>
+            <h2>Products in "{name}"</h2>
 
-            {filtered.length === 0 ? (
+            {loading ? (
+                <p>Loading...</p>
+            ) : products.length === 0 ? (
                 <p>No products found in this category.</p>
             ) : (
                 <div className="category-products-grid">
-                    {filtered.map((product) => (
+                    {products.map((product) => (
                         <div className="product-card" key={product._id}>
                             <img src={product.image} alt={product.name} />
                             <h4>{product.name}</h4>

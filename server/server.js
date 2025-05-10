@@ -9,7 +9,7 @@ import cors from 'cors';
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); 
 // Middleware to parse JSON bodies
 import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';

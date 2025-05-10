@@ -1,16 +1,28 @@
-import React from "react";
+// src/pages/FavoritesPage.jsx
+
+import React, { useEffect } from "react";
 import "../styles/FavoritesPage.css";
 import { useFavorites } from "../context/favoritesContext.js";
+import { useNavigate } from "react-router-dom";
 
 const FavoritesPage = () => {
-    // Access synced favorites and toggle method from context
     const { favorites, toggleFavorite, isFavorite } = useFavorites();
+    const navigate = useNavigate();
+
+    // Check if user is authenticated — redirect if not
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            // Redirect to login if not authenticated
+            navigate("/login");
+        }
+    }, [navigate]);
 
     return (
         <div className="favorites-page">
             <h2>My Favorite Products</h2>
 
-            {/* If no favorite products */}
+            {/* If user has no favorite products */}
             {favorites.length === 0 ? (
                 <p>You have no favorite products yet.</p>
             ) : (
@@ -21,6 +33,7 @@ const FavoritesPage = () => {
                             <h4>{product.name}</h4>
                             <p>₹{product.price}</p>
 
+                            {/* Toggle favorite/unfavorite */}
                             <button
                                 className="remove-favorite"
                                 onClick={() => toggleFavorite(product)}

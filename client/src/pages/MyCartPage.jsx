@@ -1,12 +1,21 @@
 // src/pages/MyCartPage.jsx
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/cartContext.js"; // Access cart state/actions
 import "../styles/MyCartPage.css";
+import { FaDumpster } from "react-icons/fa";
 
 const MyCartPage = () => {
+    const navigate = useNavigate();
     const { cart, incrementQuantity, decrementQuantity, removeFromCart } = useCart();
 
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token)
+            // Redirect to login if not authenticated
+            navigate("/login");
+    }, [navigate]);
     // Calculate subtotal from all cart items
     const subtotal = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
 
@@ -33,6 +42,7 @@ const MyCartPage = () => {
                                     <button onClick={() => decrementQuantity(item.product._id)}>-</button>
                                     <button onClick={() => incrementQuantity(item.product._id)}>+</button>
                                     <button className="remove-btn" onClick={() => removeFromCart(item.product._id)}>
+                                        <FaDumpster />
                                         Remove
                                     </button>
                                 </div>

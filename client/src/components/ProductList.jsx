@@ -11,24 +11,21 @@ import { useCart } from "../context/cartContext.js";
 import { useFavorites } from "../context/favoritesContext.js";
 
 const ProductList = () => {
-    // State to hold product data fetched from backend
+    // Holds product list fetched from backend
     const [products, setProducts] = useState([]);
- 
+
     // Cart context functions
     const { addToCart } = useCart();
 
     // Favorites context functions
-    const {
-        toggleFavorite,
-        isFavorite,
-    } = useFavorites();
+    const { toggleFavorite, isFavorite } = useFavorites();
 
-    // Fetch product data on component mount
+    // Load all products once on mount
     useEffect(() => {
         const fetchProducts = async () => {
             try {
                 const res = await axios.get("http://localhost:5000/api/products");
-                setProducts(res.data);
+                setProducts(res.data); // store in state
             } catch (err) {
                 console.error("Error loading products:", err);
             }
@@ -41,26 +38,26 @@ const ProductList = () => {
         <section className="product-list">
             <h2>Our Products</h2>
 
-            <div className="product-grid">
-                {products.map((product) => (
-                    <div key={product._id} className="product-card">
-                        {/* Product image */}
-                        <img src={product.image} alt={product.name} />
-
-                        {/* Product name and price */}
-                        <h3>{product.name}</h3>
-                        <p>₹{product.price}</p>
-
-                        {/* Add to Cart and Add to Favorites buttons */}
-                        <div className="product-buttons">
-                            <button onClick={() => addToCart(product)}>Add to Cart</button>
-                            <button onClick={() => toggleFavorite(product)}>
-                                {isFavorite(product._id) ? "Unfavorite" : "Favorite"}
-                            </button>
+            {/* If no products exist, show fallback message */}
+            {products.length === 0 ? (
+                <p className="no-products-msg">No products available.</p>
+            ) : (
+                <div className="product-grid">
+                    {products.map((product) => (
+                        <div key={product._id} className="product-card">
+                            <img src={product.image} alt={product.name} />
+                            <h3>{product.name}</h3>
+                            <p>₹{product.price}</p>
+                            <div className="product-buttons">
+                                <button onClick={() => addToCart(product)}>Add to Cart</button>
+                                <button onClick={() => toggleFavorite(product)}>
+                                    {isFavorite(product._id) ? "Unfavorite" : "Favorite"}
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
         </section>
     );
 };

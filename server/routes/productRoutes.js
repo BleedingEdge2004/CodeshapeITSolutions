@@ -1,13 +1,14 @@
 import express from 'express';
 import { requireSignIn, isAdmin } from '../middlewares/authMiddlewares.js';
 import {
+    createCategory,
     createProduct,
     getProducts,
     getProductById,
     updateProduct,
     deleteProduct,
-    createCategory,
 } from '../controllers/productController.js';
+
 
 const router = express.Router();
 

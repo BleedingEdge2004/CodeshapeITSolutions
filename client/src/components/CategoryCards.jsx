@@ -4,20 +4,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom"; // For routing on click
 import "../styles/CategoryCards.css"; // Make sure this file exists and is styled
 
-//Updating with correct Path
-import PainReleif from "../images/pain-releif.jpg"
-import Vitamins from "../images/vitamins.jpg"
-import Diabetes from "../images/diabetes.jpg"
-import Skincare from "../images/skincare.jpg"
-import Ayurveda from "../images/ayurveda1.jpeg"
-
 // List of categories with image names and display labels
 const categories = [
-    { name: "pain-relief", label: "Pain Relief", image: PainReleif },
-    { name: "vitamins", label: "Vitamins", image: Vitamins },
-    { name: "diabetes", label: "Diabetes", image: Diabetes },
-    { name: "skin-care", label: "Skin Care", image: Skincare },
-    { name: "ayurveda", label: "Ayurveda", image: Ayurveda },
+    { name: "Pain Relief", label: "Pain Relief", image: "/images/pain-releif.jpg" },
+    { name: "Vitamins", label: "Vitamins", image: "/images/vitamins.jpg" },
+    { name: "Diabetes", label: "Diabetes", image: "/images/diabetes.jpg" },
+    { name: "Skin Care", label: "Skin Care", image: "/images/skincare.jpg" },
+    { name: "Ayurveda", label: "Ayurveda", image: "/images/ayurveda1.jpeg" },
 ];
 
 const CategoryCards = () => {
@@ -25,7 +18,7 @@ const CategoryCards = () => {
 
     // Handle click on category → navigate to category page
     const handleClick = (categoryName) => {
-        navigate(`/category/${ categoryName }`);
+        navigate(`/category/${categoryName}`);
     };
 
     return (
@@ -33,15 +26,15 @@ const CategoryCards = () => {
             <h2>Shop by Category</h2>
 
             <div className="category-cards">
-                {categories.map((cat) => (
+                {categories.map((category) => (
                     <div
-                        key={cat.name}
+                        key={category.name}
                         className="category-card"
-                        onClick={() => handleClick(cat.name)}
+                        onClick={() => handleClick(category.name)}
                     >
                         {/* Image must be in /public/images */}
-                        <img src={cat.image} alt={cat.label} />
-                        <p>{cat.label}</p>
+                        <img src={category.image} alt={category.label} />
+                        <p>{category.label}</p>
                     </div>
                 ))}
             </div>

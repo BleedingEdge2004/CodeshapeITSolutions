@@ -24,42 +24,44 @@ export const createProduct = async (req, res) => {
 // PRODUCT: Get all (with category filter & search)
 export const getProducts = async (req, res) => {
     try {
-        const { category, prescription, excludeExpired } = req.query;
+        const { category, search, prescription, excludeExpired } = req.query;
         const filter = {};
 
-        // Convert category name to ObjectId
+        // Convert category name to ObjectId from Category collection
         if (category) {
-            const foundCategory = await Category.findOne({ name: category });
+            const foundCategory = await Category.findOne({ name: { $regex: new RegExp(category, "i") }, });
             if (foundCategory) {
                 filter.category = foundCategory._id;
             } else {
-                return res.status(404).json({ message: 'Category not found' });
+                return res.status(404).json({ message: "Category not found" });
             }
         }
-        if (prescription === 'true') filter.requiresPrescription = true;
-        if (prescription === 'false') filter.requiresPrescription = false;
 
-        if (excludeExpired === 'true') {
+        // Filter by search name
+        if (search) {
+            filter.name = { $regex: search, $options: "i" };
+        }
+
+        // Filter by prescription requirement
+        if (prescription === "true") filter.requiresPrescription = true;
+        if (prescription === "false") filter.requiresPrescription = false;
+
+        // Filter by expiry date
+        if (excludeExpired === "true") {
             filter.expiryDate = { $gt: new Date() };
         }
 
-        const products = await Product.find(filter).populate('category');
+        // Fetch products and populate category info
+        const products = await Product.find(filter).populate("category");
         res.json(products);
     } catch (err) {
-        res.status(500).json({ message: 'Error fetching products', error: err.message });
+        res.status(500).json({ message: "Error fetching products", error: err.message });
     }
-    const { search, category } = req.query;
-    const filter = {};
-    if (search) filter.name = { $regex: search, $options: 'i' };
-    if (category) filter.category = category;
-
-    const products = await Product.find(filter).populate('category');
-    res.json(products);
 };
 
 // PRODUCT: Get single
 export const getProductById = async (req, res) => {
-    const product = await Product.findById(req.params.id).populate('category');
+    const product = await Product.findById(req.params.id).populate("category");
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json(product);
 };
