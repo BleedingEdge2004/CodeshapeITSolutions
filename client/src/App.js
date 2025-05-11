@@ -13,6 +13,7 @@ import HomePage from "./pages/HomePage.jsx";
 import SearchResultsPage from "./pages/SearchResultsPage.jsx"; // Placeholder
 import ProductDetailsPage from "./pages/ProductDetailsPage.jsx"; // Placeholder
 import MyCartPage from "./pages/MyCartPage.jsx";
+import CheckoutPage from "./pages/CheckoutPage.jsx";
 import EditProfilePage from "./pages/EditProfilePage.jsx"; // Placeholder
 import OrderHistoryPage from "./pages/OrderHistoryPage.jsx"; 
 import FavoritesPage from "./pages/FavoritesPage.jsx"
@@ -52,6 +53,7 @@ function App() {
                         <Route path="/favorites" element={<FavoritesPage />} />
                         {/* My Account  Page  */}
                         <Route path="/account" element={<MyAccountPage />} />
+                        <Route path="/checkout" element={<CheckoutPage />} />
                         {/* Category Cards redirected Page */}
                         <Route path="/category/:name" element={<CategoryProductsPage />} />
                     </Routes>

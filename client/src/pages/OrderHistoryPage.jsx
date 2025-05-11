@@ -13,7 +13,7 @@ const OrderHistoryPage = () => {
         const fetchOrders = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("http://localhost:5000/api/user/orders", {
+                const res = await axios.get("http://localhost:5000/api/orders", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setOrders(res.data);
@@ -36,10 +36,11 @@ const OrderHistoryPage = () => {
                 orders.map((order) => (
                     <div key={order._id} className="order-card">
                         <h3>Order ID: {order._id}</h3>
-                        <p>Total Price: ₹{order.totalPrice}</p>
+                        <p>Total Price: ₹{order.totalAmount}</p>
+                        <p>Payment Method: {order.paymentMethod}</p>
                         <p>Payment Status: {order.paymentStatus}</p>
                         <p>Delivery Status: {order.deliveryStatus}</p>
-                        <p>Date: {new Date(order.createdAt).toLocaleString()}</p>
+                        <p>Date: {new Date(order.placedAt).toLocaleString()}</p>
 
                         <ul className="order-items">
                             {order.items.map((item, index) => (

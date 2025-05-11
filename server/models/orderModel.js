@@ -17,9 +17,13 @@ const orderSchema = new mongoose.Schema(
                 quantity: { type: Number, required: true },
             },
         ],
-        totalPrice: {
+        totalAmount: {
             type: Number,
             required: true,
+        },
+        paymentMethod: {
+            type: String,
+            default: "Cash on Delivery",
         },
         paymentStatus: {
             type: String,
@@ -27,7 +31,7 @@ const orderSchema = new mongoose.Schema(
         },
         deliveryStatus: {
             type: String,
-            default: "Processing", // or 'Shipped', 'Delivered'
+            default: "Out For Shipping", // or 'Shipped', 'Delivered'
         },
     },
     { timestamps: true }

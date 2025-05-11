@@ -26,6 +26,21 @@ const userSchema = new mongoose.Schema({
             ref: 'Product',
         }
     ],
+    orders: [
+        {
+            items: [
+                {
+                    product: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+                    quantity: Number,
+                },
+            ],
+            phone: String,
+            address: String,
+            paymentMethod: String,
+            totalAmount: Number,
+            placedAt: Date,
+        },
+    ],
 }, { timestamps: true });
 
 // Hash password before saving

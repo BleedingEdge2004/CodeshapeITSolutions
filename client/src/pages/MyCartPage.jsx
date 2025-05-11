@@ -53,7 +53,7 @@ const MyCartPage = () => {
                     <div className="cart-summary">
                         <h3>Order Summary</h3>
                         <p>Subtotal: ₹{subtotal.toFixed(2)}</p>
-                        <button className="checkout-btn">Proceed to Checkout</button>
+                        <button onClick={() => navigate("/checkout")} className="checkout-btn">Proceed to Checkout</button>
                     </div>
                 </>
             )}
