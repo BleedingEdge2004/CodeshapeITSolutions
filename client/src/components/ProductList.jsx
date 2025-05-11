@@ -2,31 +2,24 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-// Import styles
 import "../styles/ProductList.css";
 
-// Import cart and favorites context
 import { useCart } from "../context/cartContext.js";
 import { useFavorites } from "../context/favoritesContext.js";
 
 const ProductList = () => {
-    // Holds product list fetched from backend
     const [products, setProducts] = useState([]);
-
-    // Cart context functions
     const { addToCart } = useCart();
+    const { toggleFavorite } = useFavorites();
+    const navigate = useNavigate();
 
-    // Favorites context functions
-    const { toggleFavorite, isFavorite } = useFavorites();
-
-    // Load all products once on mount
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get("http://localhost:5000/api/products");
-                setProducts(res.data); // store in state
+                const res = await axios.get("/api/products");
+                setProducts(res.data);
             } catch (err) {
                 console.error("Error loading products:", err);
             }
@@ -35,29 +28,42 @@ const ProductList = () => {
         fetchProducts();
     }, []);
 
+    // Check for auth token
+    const isLoggedIn = !!localStorage.getItem("token");
+
     return (
         <section className="product-list">
             <h2>Our Products</h2>
 
-            {/* If no products exist, show fallback message */}
             {products.length === 0 ? (
                 <p className="no-products-msg">No products available.</p>
             ) : (
                 <div className="product-grid">
-                        {products.map((product) => (
-                            // Each product card
-                            <div key={product._id} className="product-card">
-                                <Link to={`/product/${product._id}`} className="product-link">
-                                    <img src={product.image} alt={product.name} />
-                                    <h3>{product.name}</h3>
-                                    <p>₹{product.price}</p>
-                                </Link>
-                                <div className="product-buttons">
-                                    <button onClick={() => addToCart(product)}>Add to Cart</button>
-                                    <button onClick={() => toggleFavorite(product)}>
-                                        {isFavorite(product._id) ? "Unfavorite" : "Favorite"}
-                                    </button>
-                                </div>
+                    {products.map((product) => (
+                        <div key={product._id} className="product-card">
+                            <Link to={`/product/${product._id}`} >
+                                <img src={product.image} alt={product.name} />
+                                <h3>{product.name}</h3>
+                                <p>₹{product.price}</p>
+                            </Link>
+
+                            <div className="product-buttons">
+                                <button
+                                    onClick={() => {
+                                        if (!isLoggedIn) return navigate("/login");
+                                        addToCart(product);
+                                    }}
+                                >
+                                    Add to Cart
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        if (!isLoggedIn) return navigate("/login");
+                                        toggleFavorite(product);
+                                    }}
+                                >Add To Favorites
+                                </button>
+                            </div>
                         </div>
                     ))}
                 </div>

@@ -3,7 +3,10 @@ import {
   getUserCart,
   updateUserCart,
   getUserFavorites,
-  toggleFavorite
+  toggleFavorite,
+  getUserProfile,
+  updateUserProfile,
+  getUserOrders
 } from "../controllers/userController.js";
 import { requireSignIn } from "../middlewares/authMiddlewares.js";
 
@@ -16,5 +19,12 @@ router.post("/cart", requireSignIn, updateUserCart);
 // Favorites routes
 router.get("/favorites", requireSignIn, getUserFavorites);
 router.post("/favorites", requireSignIn, toggleFavorite);
+
+// Profile routes
+router.get("/profile", requireSignIn, getUserProfile);
+router.put("/profile", requireSignIn, updateUserProfile);
+
+// Orders routes
+router.get("/orders", requireSignIn, getUserOrders);
 
 export default router;

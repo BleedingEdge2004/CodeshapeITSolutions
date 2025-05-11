@@ -1,0 +1,60 @@
+/* src/styles/EditProfilePage.css */
+
+.edit-profile-page {
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.edit-profile-page h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edit-profile-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  color: #555;
+}
+
+.edit-profile-form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-top: 6px;
+  transition: border-color 0.3s;
+}
+
+.edit-profile-form input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.edit-profile-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-profile-form button:hover {
+  background-color: #0056b3;
+}

@@ -12,25 +12,25 @@ const MyCartPage = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-        if (!token)
-            // Redirect to login if not authenticated
-            navigate("/login");
+        if (!token) navigate("/login"); // Redirect to login if not authenticated
     }, [navigate]);
-    // Calculate subtotal from all cart items
-    const subtotal = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+
+    // Ensure cart is always an array
+    const validCart = Array.isArray(cart) ? cart : [];
+
+    // Calculate subtotal safely
+    const subtotal = validCart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
 
     return (
         <div className="cart-page">
             <h2>My Cart</h2>
 
-            {/* If cart is empty */}
-            {cart.length === 0 ? (
+            {validCart.length === 0 ? (
                 <p>Your cart is empty.</p>
             ) : (
                 <>
-                    {/* Cart Items */}
                     <div className="cart-items">
-                        {cart.map((item) => (
+                        {validCart.map((item) => (
                             <div key={item.product._id} className="cart-item">
                                 <img src={item.product.image} alt={item.product.name} />
                                 <div className="cart-item-info">
@@ -50,7 +50,6 @@ const MyCartPage = () => {
                         ))}
                     </div>
 
-                    {/* Order Summary */}
                     <div className="cart-summary">
                         <h3>Order Summary</h3>
                         <p>Subtotal: ₹{subtotal.toFixed(2)}</p>

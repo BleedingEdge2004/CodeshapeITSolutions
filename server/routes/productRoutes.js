@@ -9,7 +9,6 @@ import {
     deleteProduct,
 } from '../controllers/productController.js';
 
-
 const router = express.Router();
 
 // Category (optional route)

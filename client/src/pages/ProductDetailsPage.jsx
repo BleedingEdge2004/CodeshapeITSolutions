@@ -17,8 +17,8 @@ const ProductDetailsPage = () => {
     const [product, setProduct] = useState(null);
 
     const { addToCart } = useCart();
-    const { toggleFavorite, isFavorite } = useFavorites();
-
+    const { toggleFavorite } = useFavorites();
+    const isLoggedIn = !!localStorage.getItem("token"); // Check if user is logged in
     // Fetch product details on mount
     useEffect(() => {
         const fetchProduct = async () => {
@@ -74,19 +74,16 @@ const ProductDetailsPage = () => {
                 {/* Action Buttons */}
                 <div className="product-action-buttons">
                     <button onClick={() => {
-                        const token = localStorage.getItem("token");
-                        if (!token) return navigate("/login");
+                        if (!isLoggedIn) return navigate("/login");
                         addToCart(product);
                     }}>
                         Add to Cart
                     </button>
 
                     <button onClick={() => {
-                        const token = localStorage.getItem("token");
-                        if (!token) return navigate("/login");
+                        if (!isLoggedIn) return navigate("/login");
                         toggleFavorite(product);
-                    }}>
-                        {isFavorite(product._id) ? "Remove from Favorites" : "Add to Favorites"}
+                    }}>Add To Favorites
                     </button>
 
                     <button onClick={handleBuyNow}>Buy Now</button>

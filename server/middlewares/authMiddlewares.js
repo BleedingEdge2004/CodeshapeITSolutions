@@ -10,12 +10,15 @@ export const requireSignIn = async (req, res, next) => {
         }
 
         const token = authHeader.split(' ')[1];
-
         const decode = jwt.verify(token, process.env.JWT_SECRET);
-        if (!decode.id) {
-            return res.status(401).json({ message: 'Invalid token payload missing user ID' });
+
+        // Fetch the full user document and attach it to req.user
+        const user = await User.findById(decode.id);
+        if (!user) {
+            return res.status(401).json({ message: 'User not found' });
         }
-        req.user = decode;
+
+        req.user = user; // Now this is a full Mongoose document
         next();
     } catch (error) {
         console.error('Token verification failed:', error);

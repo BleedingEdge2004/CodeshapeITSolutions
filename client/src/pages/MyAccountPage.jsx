@@ -1,33 +1,65 @@
-// src/pages/MyAccountPage.jsx
+// MyAccountPage.jsx
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/MyAccountPage.css"; // Import CSS for styling
-import { FaEdit, FaHistory, FaLock } from "react-icons/fa";
+import axios from "axios";
+import "../styles/MyAccountPage.css"; // Keep your existing enhanced CSS
 
 const MyAccountPage = () => {
+    const [userData, setUserData] = useState(null); // Store user info
     const navigate = useNavigate();
+
+    // Fetch user info on component mount
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (!token) navigate("/login"); // Redirect to login if not authenticated
-    }, [navigate]);
+        const fetchUserProfile = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                const response = await axios.get("/api/user/profile", {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                setUserData(response.data);
+            } catch (error) {
+                console.error("Error fetching user profile:", error);
+            }
+        };
+
+        fetchUserProfile();
+    }, []);
+
+    // Handle logout - clears token and redirects
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/");
+    };
+
+    // Navigate to Edit Profile
+    const handleEditProfile = () => {
+        navigate("/edit-profile");
+    };
+
+    // Navigate to Order History
+    const handleOrderHistory = () => {
+        navigate("/order-history");
+    };
+
     return (
         <div className="account-page">
             <h2>My Account</h2>
 
-            {/* <div className="account-info"> */}
-                {/* Display user basic information */}
-                {/* <p><strong>Name:</strong> {user.name}</p> */}
-                {/* <p><strong>Email:</strong> {user.email}</p> */}
-                {/* <p><strong>Phone:</strong> {user.phone}</p> */}
-                {/* <p><strong>Address:</strong> {user.address}</p> */}
-            {/* </div> */}
+            <div className="account-info">
+                <p><strong>Name:</strong> {userData?.name || "Loading..."}</p>
+                <p><strong>Email:</strong> {userData?.email || "Loading..."}</p>
+                <p><strong>Phone:</strong> {userData?.phone || "Not Provided"}</p>
+                <p><strong>Address:</strong> {userData?.address || "Not Provided"}</p>
+                <p><strong>Pincode:</strong> {userData?.pincode || "Not Provided"}</p>
+            </div>
 
-            {/* Action buttons (not functional yet) */}
             <div className="account-actions">
-                <button><FaEdit/> Edit Profile</button>
-                <button><FaHistory /> Order History</button>
-                <button><FaLock />Logout</button>
+                <button onClick={handleEditProfile}>Edit Profile</button>
+                <button onClick={handleOrderHistory}>Order History</button>
+                <button onClick={handleLogout}>Logout</button>
             </div>
         </div>
     );

@@ -13,6 +13,8 @@ import HomePage from "./pages/HomePage.jsx";
 import SearchResultsPage from "./pages/SearchResultsPage.jsx"; // Placeholder
 import ProductDetailsPage from "./pages/ProductDetailsPage.jsx"; // Placeholder
 import MyCartPage from "./pages/MyCartPage.jsx";
+import EditProfilePage from "./pages/EditProfilePage.jsx"; // Placeholder
+import OrderHistoryPage from "./pages/OrderHistoryPage.jsx"; 
 import FavoritesPage from "./pages/FavoritesPage.jsx"
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage.jsx";
@@ -42,7 +44,8 @@ function App() {
 
                         {/* Product List shown separately if needed */}
                         <Route path="/products" element={<ProductList />} />
-
+                        <Route path="/edit-profile" element={<EditProfilePage />} />
+                        <Route path="/order-history" element={<OrderHistoryPage />} />
                         {/* Dynamic Product Details route */}
                         <Route path="/product/:id" element={<ProductDetailsPage />} />
                         {/* My Favorites Products  Page  */}
