@@ -77,3 +77,25 @@ export const deleteProduct = async (req, res) => {
     await Product.findByIdAndDelete(req.params.id);
     res.json({ message: 'Product deleted' });
 };
+
+// Admin update product
+export const updateProductByAdmin = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const updatedProduct = await Product.findByIdAndUpdate(
+            id,
+            { $set: req.body }, // Updates only provided fields
+            { new: true }
+        );
+
+        if (!updatedProduct) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        res.json(updatedProduct);
+    } catch (err) {
+        console.error("Update error:", err);
+        res.status(500).json({ message: "Failed to update product" });
+    }
+};

@@ -1,56 +1,88 @@
 /* client/src/pages/CheckoutPage.css */
 
 .checkout-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    background-color: #fff;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 24px 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.checkout-container:hover {
+  transform: scale(1.01);
 }
 
 .checkout-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .checkout-form label {
-    font-weight: 600;
-    margin-bottom: 4px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #333;
+  font-size: 15px;
 }
 
 .checkout-form input,
 .checkout-form textarea {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.checkout-form input:focus,
+.checkout-form textarea:focus {
+  outline: none;
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
 }
 
 .checkout-form textarea {
-    resize: vertical;
-    min-height: 100px;
+  resize: vertical;
+  min-height: 100px;
 }
 
 .cod-info {
-    background-color: #f3f3f3;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
+  background-color: #f3f3f3;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+  border-left: 4px solid #28a745;
 }
 
 .checkout-form button {
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    background-color: #28a745;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, #28a745, #218838);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .checkout-form button:hover {
-    background-color: #218838;
+  background: linear-gradient(to right, #218838, #1e7e34);
+  transform: translateY(-1px);
+}
+
+/* Responsive tweak */
+@media (max-width: 540px) {
+  .checkout-container {
+    margin: 20px 10px;
+    padding: 20px 16px;
+  }
 }

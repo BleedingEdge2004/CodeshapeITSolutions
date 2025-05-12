@@ -7,6 +7,7 @@ import {
     getProductById,
     updateProduct,
     deleteProduct,
+    updateProductByAdmin,
 } from '../controllers/productController.js';
 
 const router = express.Router();
@@ -20,5 +21,7 @@ router.get('/', getProducts);
 router.get('/:id', getProductById);
 router.put('/:id', requireSignIn, isAdmin, updateProduct);
 router.delete('/:id', requireSignIn, isAdmin, deleteProduct);
+// Admin-only update product route
+router.put("/admin/update/:id", requireSignIn, isAdmin, updateProductByAdmin);
 
 export default router;

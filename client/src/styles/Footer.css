@@ -2,15 +2,15 @@
 .footer {
   background-color: #222;
   color: #fff;
-  padding: 40px 30px;
-  font-family: Arial, sans-serif;
+  padding: 40px 30px 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-/* Grid layout for four columns */
+/* Grid layout for columns */
 .footer-columns {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 30px;
+  gap: 32px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -18,22 +18,29 @@
 /* Footer headings */
 .footer-columns h3,
 .footer-columns h4 {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
+  letter-spacing: 0.3px;
 }
 
-/* Links inside footer */
+/* Footer links */
 .footer-columns ul {
   list-style: none;
   padding: 0;
+  margin: 0;
+}
+
+.footer-columns ul li {
+  margin-bottom: 8px;
 }
 
 .footer-columns ul li a {
   color: #ccc;
   text-decoration: none;
   font-size: 14px;
+  transition: color 0.3s;
 }
 
 .footer-columns ul li a:hover {
@@ -43,21 +50,26 @@
 /* Newsletter input + button */
 .footer-columns input[type="email"] {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 14px;
 }
 
 .footer-columns button {
   background-color: #007bff;
   color: white;
-  padding: 8px 12px;
+  padding: 9px 14px;
   font-size: 14px;
   border: none;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.footer-columns button:hover {
+  background-color: #0056b3;
 }
 
 /* Bottom copyright */
@@ -66,4 +78,21 @@
   font-size: 12px;
   color: #aaa;
   margin-top: 30px;
+  border-top: 1px solid #444;
+  padding-top: 16px;
+}
+
+/* Responsive tweak */
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 20px;
+  }
+
+  .footer-columns h3 {
+    font-size: 15px;
+  }
+
+  .footer-columns ul li a {
+    font-size: 13px;
+  }
 }

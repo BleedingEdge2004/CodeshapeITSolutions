@@ -62,6 +62,7 @@ export const CartProvider = ({ children }) => {
                 { productId: product._id },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
+            alert("Item added to cart successfully.");
             dispatch({ type: "SET_CART", payload: res.data.cart }); // updated payload structure
         } catch (err) {
             alert("Failed to add item to cart: " + (err?.response?.data?.message || err.message));
@@ -78,6 +79,7 @@ export const CartProvider = ({ children }) => {
             const res = await axios.delete(`/api/cart/${productId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
+            alert("Item removed from cart successfully.");
             dispatch({ type: "SET_CART", payload: res.data });
         } catch (err) {
             console.error("Error removing from cart:", err?.response?.data || err.message);
@@ -95,6 +97,7 @@ export const CartProvider = ({ children }) => {
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );
+            alert("Quantity increased successfully.");
             dispatch({ type: "SET_CART", payload: res.data });
         } catch (err) {
             console.error("Error incrementing quantity:", err?.response?.data || err.message);
@@ -112,6 +115,7 @@ export const CartProvider = ({ children }) => {
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );
+            alert("Quantity decreased successfully.");
             dispatch({ type: "SET_CART", payload: res.data });
         } catch (err) {
             console.error("Error decrementing quantity:", err?.response?.data || err.message);

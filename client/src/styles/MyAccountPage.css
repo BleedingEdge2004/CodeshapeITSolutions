@@ -10,7 +10,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Heading for the section */
+/* Section heading */
 .account-page h2 {
   text-align: center;
   font-size: 2.2rem;
@@ -18,7 +18,7 @@
   margin-bottom: 35px;
 }
 
-/* Block for user details */
+/* Block for user info */
 .account-info {
   background-color: #fdfdfd;
   padding: 25px 30px;
@@ -32,23 +32,26 @@
 }
 
 .account-info:hover {
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
 }
 
 .account-info p {
   margin: 10px 0;
+  word-break: break-word;
 }
 
-/* Buttons container */
+/* Button container */
 .account-actions {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 15px;
 }
 
-/* Common styles for all buttons */
+/* Shared button style */
 .account-actions button {
   flex: 1;
+  min-width: 120px;
   padding: 14px 0;
   background-color: #007bff;
   border: none;
@@ -60,14 +63,34 @@
   transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Hover effect for buttons */
+/* Hover effect */
 .account-actions button:hover {
   background-color: #0056b3;
   transform: translateY(-2px);
 }
 
-/* Add subtle focus for accessibility */
+/* Focus outline */
 .account-actions button:focus {
   outline: 2px dashed #0056b3;
   outline-offset: 3px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .account-page {
+    padding: 30px 20px;
+  }
+
+  .account-info {
+    padding: 20px;
+    font-size: 1rem;
+  }
+
+  .account-actions {
+    flex-direction: column;
+  }
+
+  .account-actions button {
+    width: 100%;
+  }
 }

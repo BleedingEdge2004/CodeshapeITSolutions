@@ -9,7 +9,8 @@ import "../styles/ProductList.css";
 import { useCart } from "../context/cartContext.js";
 import { useFavorites } from "../context/favoritesContext.js";
 
-const ProductList = () => {
+const ProductList = ({ isAdmin = false, onDelete, onEdit }) => {
+
     const [products, setProducts] = useState([]);
     const { addToCart } = useCart();
     const { toggleFavorite } = useFavorites();
@@ -33,7 +34,7 @@ const ProductList = () => {
 
     return (
         <section className="product-list">
-            <h2>Our Products</h2>
+            <h2>{isAdmin ? "Manage Products" : "Our Products"}</h2>
 
             {products.length === 0 ? (
                 <p className="no-products-msg">No products available.</p>
@@ -63,6 +64,20 @@ const ProductList = () => {
                                     }}
                                 >Add To Favorites
                                 </button>
+                                {isAdmin && (
+                                    <>
+                                        {onEdit && (
+                                            <button onClick={() => onEdit(product)}>
+                                                Edit
+                                            </button>
+                                        )}
+                                        {onDelete && (
+                                            <button onClick={() => onDelete(product._id)}>
+                                                Delete
+                                            </button>
+                                        )}
+                                    </>
+                                )}
                             </div>
                         </div>
                     ))}

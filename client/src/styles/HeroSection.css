@@ -1,23 +1,68 @@
 /* Hero section wrapper */
 .hero-section {
   background: linear-gradient(to right, #f0f9ff, #e0f2fe);
-  padding: 60px 30px;
+  padding: 80px 30px;
   text-align: center;
   border-bottom: 1px solid #ddd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 /* Main headline */
 .hero-section h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 15px;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
   color: #0d47a1;
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(13, 71, 161, 0.2);
 }
 
 /* Subheading text */
 .hero-section p {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #333;
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 20px;
+  }
+
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-section p {
+    font-size: 0.95rem;
+  }
 }

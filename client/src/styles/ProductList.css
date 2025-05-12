@@ -4,93 +4,165 @@
 .product-list {
   padding: 2rem;
   background-color: #f8f9fa;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 /* Heading styling */
 .product-list h2 {
-  font-size: 1.8rem;
+  font-size: 2rem; /* Increased size for better readability */
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem; /* More spacing */
   color: #333;
+  font-weight: bold;
+  text-transform: uppercase; /* Added for a modern, clean look */
 }
 
 /* Product card grid */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Increased min-width for larger cards */
+  gap: 1.8rem; /* Increased gap between cards */
+  justify-items: center; /* Center cards inside grid */
 }
-
 
 /* Individual product card */
 .product-card {
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  padding: 1rem;
+  border-radius: 12px; /* Softer corners */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
+  padding: 1.5rem; /* Slightly more padding for a spacious look */
   text-align: center;
   text-decoration: none;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-height: 400px; /* Prevent product cards from being too tall */
 }
 
 .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px); /* Larger hover effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* More prominent shadow on hover */
 }
 
 /* Product image */
 .product-card img {
   width: 100%;
-  height: 150px;
+  height: 200px; /* Increased image height */
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  border-radius: 10px; /* Softer image corners */
+  margin-bottom: 1.5rem; /* More space below the image */
 }
 
 /* Product name and price */
 .product-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.3rem; /* Slightly larger text */
   color: #333;
   margin: 0.5rem 0;
+  font-weight: 500;
 }
 
 .product-card p {
-  font-size: 1rem;
-  color: #666;
+  font-size: 1.1rem; /* Increased font size for better readability */
+  color: #777; /* Lighter gray for description text */
+  margin-bottom: 1.5rem;
 }
 
 /* Button container */
 .product-buttons {
-  margin-top: 12px;
+  margin-top: 15px; /* Increased margin */
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 /* Individual buttons */
 .product-buttons button {
-  padding: 6px 12px;
+  padding: 8px 16px; /* Slightly larger padding for a more prominent look */
   font-size: 14px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px; /* Softer, larger border radius */
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   color: white;
+  font-weight: 600;
 }
 
-/* Add to Cart button */
 .product-buttons button:nth-child(1) {
-  background-color: #007bff;
+  background-color: #007bff; /* Primary color */
 }
 
-/* Favorite button */
 .product-buttons button:nth-child(2) {
-  background-color: #28a745;
+  background-color: #28a745; /* Success color */
 }
 
+/* Hover effects for buttons */
 .product-buttons button:hover {
   opacity: 0.9;
+  transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-list {
+    padding: 1.5rem;
+  }
+
+  .product-list h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Smaller grid items for tablets */
+  }
+
+  .product-card {
+    padding: 1rem;
+  }
+
+  .product-card img {
+    height: 180px; /* Reduced image height */
+  }
+
+  .product-card h3 {
+    font-size: 1.1rem; /* Smaller text for smaller screens */
+  }
+
+  .product-card p {
+    font-size: 0.95rem; /* Smaller text for description */
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list {
+    padding: 1rem;
+  }
+
+  .product-list h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller grid items for phones */
+  }
+
+  .product-card {
+    padding: 0.8rem;
+  }
+
+  .product-card img {
+    height: 160px; /* Further reduced image height for mobile */
+  }
+
+  .product-card h3 {
+    font-size: 1rem; /* Even smaller text */
+  }
+
+  .product-card p {
+    font-size: 0.9rem; /* Smaller text on mobile */
+  }
 }
