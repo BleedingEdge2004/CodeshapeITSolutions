@@ -1,10 +1,10 @@
-#🏥 Online Medical Store - MERN Stack Project
+# 🏥 Online Medical Store - MERN Stack Project
 
-##Author: SachinKumarYadav
+## Author: SachinKumarYadav
 
 A full-stack eCommerce application for an online medical store built using the MERN Stack (MongoDB, Express, React, Node.js). Users can browse medicines, manage carts, place orders, and view their order history. Admins have access to manage inventory and orders.
 
-##🗂 Project Structure
+## 🗂 Project Structure
 project-root/
 ├── server/                     # Backend (Express + MongoDB)
 │   ├── config/                # DB connection and environment config
@@ -30,13 +30,13 @@ project-root/
 │   ├── package.json
 │   └── package-lock.json
 
-##💻 Technologies Used
-###Frontend:
+## 💻 Technologies Used
+### Frontend:
 •React.js (with Hooks, Context API, useReducer)
 •HTML5, CSS3
 •Axios (for API communication)
 •React Router DOM
-###Backend:
+### Backend:
 •Node.js
 •Express.js
 •MongoDB + Mongoose
@@ -45,8 +45,8 @@ project-root/
 •dotenv (environment config)
 •CORS (Cross-Origin Resource Sharing)
 
-##🌟 Key Features
-###🧑‍⚕ Frontend - User Interface
+## 🌟 Key Features
+### 🧑‍⚕ Frontend - User Interface
 Responsive Design
 •User Pages:
 •Home
@@ -58,20 +58,22 @@ Responsive Design
 •Order History
 •User Profile
 
-###🔐 Backend - Server Side
+### 🔐 Backend - 
+Server Side
 •JWT-Based Authentication
 •Product CRUD (Admin Only)
 •Cart & Order Management
 •Role-Based Access (Admin vs User)
 
-##📦 Database - ###MongoDB Stores:
+## 📦 Database - 
+### MongoDB Stores:
 •Users
 •Medicines (Products)
 •Cart Items
 •Orders
 •Categories
 
-##🚀 Setup Instructions
+## 🚀 Setup Instructions
 1. Clone the Repository
 bash
 Copy code
@@ -110,32 +112,32 @@ Copy code
 npm start
 
 
-##🌐 Usage
+## 🌐 Usage
 Frontend: http://localhost:3000
 Backend API: http://localhost:5000
 RESTful APIs are used for user authentication, product handling, and order management.
 
-##📸 Screenshots
-####**HomePage**
+## 📸 Screenshots
+#### **HomePage**
 ![alt text](Final1.jpg)
-####**Homepage Content**
+#### **Homepage Content**
 ![alt text](Final2.jpg)
-####**Homepage Content**
+#### **Homepage Content**
 ![alt text](Final3.jpg)
-####**Homepage Content Footer**
+#### **Homepage Content Footer**
 ![alt text](Final4.jpg)
-####**Favorites Page**
+#### **Favorites Page**
 ![alt text](Final5.jpg)
-####**My Cart Page**
+#### **My Cart Page**
 ![alt text](Final6.jpg)
-####**User Order History Page**
+#### **User Order History Page**
 ![alt text](Final7.jpg)
-####**User Account Page**
+#### **User Account Page**
 ![alt text](Final8.jpg)
 🌍 Deployment (Optional)
 Frontend: Vercel 
 Backend: Render 
 
-##👤 Author
-###SachinKumarYadav
-###GitHub: @BleedingEdge2004
+## 👤 Author
+### SachinKumarYadav
+### GitHub: @BleedingEdge2004
