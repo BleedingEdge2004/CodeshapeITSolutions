@@ -77,8 +77,10 @@ Server Side
 1. Clone the Repository
 bash
 Copy code
-git clone https://github.com/your-username/online-medical-store.git
-cd online-medical-store
+git clone https://github.com/bleedingedge2004/codeshapeitsolutions.git
+cd server //For backend folder
+OR
+cd client //For frontend folder
 
 2. Install Backend Dependencies
 bash
@@ -90,8 +92,8 @@ npm install
 ini
 Copy code
 PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
+MONGO_URI=mongodb+srv://skyslk2964:1234asdf1234@cluster0.fldtrj6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+JWT_SECRET=yadavkumarsachin
 
 4. Start Backend Server
 bash
