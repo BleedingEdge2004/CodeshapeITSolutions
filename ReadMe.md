@@ -116,7 +116,7 @@ npm start
 
 ## 🌐 Usage
 Frontend: http://localhost:3000
-Backend API: http://localhost:5000
+Backend API: https://codeshapeitsolutions.onrender.com
 RESTful APIs are used for user authentication, product handling, and order management.
 
 ## 📸 Screenshots
