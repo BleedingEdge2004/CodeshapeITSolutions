@@ -1,6 +1,8 @@
 {
-    "buildCommand": "npm run build",
-    "outputDirectory": "build",
-    "rootDirectory": "client",
-    "framework": "create-react-app"
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/indec.html"
+        }
+    ]
 }
