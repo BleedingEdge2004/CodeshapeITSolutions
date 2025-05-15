@@ -1,0 +1,7 @@
+{
+    "projects": {},
+    "buildCommand": "npm run build",
+    "outputDirectory": "build",
+    "rootDirectory": "client",
+    "framework": "create-react-app"
+}
