@@ -115,7 +115,7 @@ npm start
 
 
 ## 🌐 Usage
-Frontend: http://localhost:3000
+Frontend:https://codeshape-it-solutions-ufze.vercel.app/
 Backend API: https://codeshapeitsolutions.onrender.com
 RESTful APIs are used for user authentication, product handling, and order management.
 
