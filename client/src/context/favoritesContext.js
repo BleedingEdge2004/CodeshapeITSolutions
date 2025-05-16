@@ -27,7 +27,7 @@ export const FavoritesProvider = ({ children }) => {
             if (!token) return;
 
             try {
-                const res = await axios.get("/api/user/favorites", {
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/favorites`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setFavorites(Array.isArray(res.data) ? res.data : []);
@@ -49,7 +49,7 @@ export const FavoritesProvider = ({ children }) => {
 
         try {
             const res = await axios.post(
-                "/api/user/favorites",
+                `${process.env.REACT_APP_API_URL}/api/user/favorites`,
                 { productId: product._id },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -66,7 +66,7 @@ export const FavoritesProvider = ({ children }) => {
 
         try {
             const res = await axios.delete(
-                `/api/user/favorites/${productId}`,
+                `${process.env.REACT_APP_API_URL}/api/user/favorites/${productId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setFavorites(Array.isArray(res.data) ? res.data : []);
@@ -85,7 +85,7 @@ export const FavoritesProvider = ({ children }) => {
 
         try {
             const res = await axios.post(
-                "/api/user/favorites",
+                `${process.env.REACT_APP_API_URL}/api/user/favorites`,
                 { productId: product._id },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

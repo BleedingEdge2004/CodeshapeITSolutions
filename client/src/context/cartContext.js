@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
             if (!token) return;
 
             try {
-                const res = await axios.get("/api/cart", {
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/cart`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 dispatch({ type: "SET_CART", payload: res.data });
@@ -58,7 +58,7 @@ export const CartProvider = ({ children }) => {
         }
         try {
             const res = await axios.post(
-                "/api/cart/add", // FIXED endpoint to match backend
+                `${process.env.REACT_APP_API_URL}/api/cart/add`, // FIXED endpoint to match backend
                 { productId: product._id },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -76,7 +76,7 @@ export const CartProvider = ({ children }) => {
         if (!token) return;
 
         try {
-            const res = await axios.delete(`/api/cart/${productId}`, {
+            const res = await axios.delete(`${process.env.REACT_APP_API_URL}/api/cart/${productId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             alert("Item removed from cart successfully.");
@@ -93,7 +93,7 @@ export const CartProvider = ({ children }) => {
 
         try {
             const res = await axios.put(
-                `/api/cart/increment/${productId}`,
+                `${process.env.REACT_APP_API_URL}/api/cart/increment/${productId}`,
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -111,7 +111,7 @@ export const CartProvider = ({ children }) => {
 
         try {
             const res = await axios.put(
-                `/api/cart/decrement/${productId}`,
+                `${process.env.REACT_APP_API_URL}/api/cart/decrement/${productId}`,
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );

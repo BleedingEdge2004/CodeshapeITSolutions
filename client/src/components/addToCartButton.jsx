@@ -9,7 +9,7 @@ const AddToCartButton = ({ productId }) => {
         try {
             const token = localStorage.getItem('token');
             const res = await axios.post(
-                'http://localhost:5000/api/cart/add',
+                `${process.snv.REACT_APP_API_URL}//api/cart/add`,
                 { productId },
                 { headers: { Authorization: ` Bearer ${token}` } }
             );
