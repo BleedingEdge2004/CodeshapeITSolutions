@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { API } from "../utils/api.js"
 import "../styles/SearchResultsPage.css"; // Create this CSS file
 
 const SearchResultsPage = () => {
@@ -20,7 +21,7 @@ const SearchResultsPage = () => {
     useEffect(() => {
         const fetchResults = async () => {
             try {
-                const res = await axios.get("/api/products", {
+                const res = await axios.get(`${API}/products`, {
                     params: {
                         search,
                         category,

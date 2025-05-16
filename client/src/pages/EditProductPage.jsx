@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API } from "../utils/api.js"
 import "../styles/EditProductPage.css";
 
 const EditProductPage = () => {
@@ -19,7 +20,7 @@ const EditProductPage = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const res = await axios.get(`/api/products/${id}`);
+                const res = await axios.get(`${API}/products/${id}`);
                 setProduct(res.data);
             } catch (error) {
                 console.error("Failed to load product:", error);
@@ -37,7 +38,7 @@ const EditProductPage = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            await axios.put(`/api/products/admin/update/${id}`, product, {
+            await axios.put(`${API}/products/admin/update/${id}`, product, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API } from "../utils/api.js"
 import "../styles/MyAccountPage.css"; // Keep your existing enhanced CSS
 
 const MyAccountPage = () => {
@@ -14,7 +15,7 @@ const MyAccountPage = () => {
         const fetchUserProfile = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get("/api/user/profile", {
+                const response = await axios.get(`${API}/user/profile`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

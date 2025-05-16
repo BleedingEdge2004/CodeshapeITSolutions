@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { API } from "../utils/api.js"
 
 import "../styles/ProductList.css";
 
@@ -19,7 +20,7 @@ const ProductList = ({ isAdmin = false, onDelete, onEdit }) => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get("/api/products");
+                const res = await axios.get(`${API}/products`);
                 setProducts(res.data);
             } catch (err) {
                 console.error("Error loading products:", err);

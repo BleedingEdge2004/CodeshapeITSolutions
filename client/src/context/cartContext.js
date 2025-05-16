@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import axios from "axios";
+import { API } from "../utils/api.js"
 
 // Create the context
 const CartContext = createContext();
@@ -37,7 +38,7 @@ export const CartProvider = ({ children }) => {
             if (!token) return;
 
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/cart`, {
+                const res = await axios.get(`${API}/cart`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 dispatch({ type: "SET_CART", payload: res.data });
@@ -57,8 +58,7 @@ export const CartProvider = ({ children }) => {
             return;
         }
         try {
-            const res = await axios.post(
-                `${process.env.REACT_APP_API_URL}/api/cart/add`, // FIXED endpoint to match backend
+            const res = await axios.post(`${API}/cart/add`,
                 { productId: product._id },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -76,7 +76,7 @@ export const CartProvider = ({ children }) => {
         if (!token) return;
 
         try {
-            const res = await axios.delete(`${process.env.REACT_APP_API_URL}/api/cart/${productId}`, {
+            const res = await axios.delete(`${API}/cart/${productId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             alert("Item removed from cart successfully.");
@@ -93,7 +93,7 @@ export const CartProvider = ({ children }) => {
 
         try {
             const res = await axios.put(
-                `${process.env.REACT_APP_API_URL}/api/cart/increment/${productId}`,
+                `${API}/cart/increment/${productId}`,
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -111,7 +111,7 @@ export const CartProvider = ({ children }) => {
 
         try {
             const res = await axios.put(
-                `${process.env.REACT_APP_API_URL}/api/cart/decrement/${productId}`,
+                `${API}/cart/decrement/${productId}`,
                 {},
                 { headers: { Authorization: `Bearer ${token}` } }
             );

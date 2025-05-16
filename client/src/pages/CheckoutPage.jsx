@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API } from "../utils/api.js"
 import "../styles/CheckoutPage.css";
 
 const CheckoutPage = () => {
@@ -19,7 +20,7 @@ const CheckoutPage = () => {
         }
 
         try {
-            const res = await fetch("/api/orders/place", {
+            const res = await fetch(`${API}/orders/place`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

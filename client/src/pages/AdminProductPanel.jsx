@@ -3,6 +3,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API } from "../utils/api.js";
 
 import ProductList from "../components/ProductList.jsx"; // existing component
 
@@ -22,7 +23,7 @@ const AdminProductPanel = () => {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`/api/products/${productId}`, {
+            await axios.delete(`${API}/products/${productId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

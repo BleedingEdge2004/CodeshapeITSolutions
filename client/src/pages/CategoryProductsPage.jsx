@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { API } from "../utils/api.js"
 
 import "../styles/CategoryProductsPage.css";
 
@@ -15,7 +16,7 @@ const CategoryProductsPage = () => {
         const fetchProducts = async () => {
             try {
                 setLoading(true);
-                const res = await axios.get(`/api/products?category=${name}`);
+                const res = await axios.get(`${API}/products?category=${name}`);
                 setProducts(res.data);
                 setLoading(false);
             } catch (err) {

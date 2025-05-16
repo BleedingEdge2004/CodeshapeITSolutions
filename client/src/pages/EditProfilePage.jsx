@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/EditProfilePage.css";
 import { useNavigate } from "react-router-dom";
+import { API } from "../utils/api.js"
 
 const EditProfilePage = () => {
     const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const EditProfilePage = () => {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("https://codeshapeitsolutions.onrender.com/api/user/profile", {
+                const res = await axios.get(`${API}/user/profile`, {
                     headers: { Authorization: `Bearer ${ token }` },
         });
     setFormData(res.data);

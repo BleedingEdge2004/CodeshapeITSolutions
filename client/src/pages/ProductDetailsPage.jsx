@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { API } from "../utils/api.js"
 
 // Import styles
 import "../styles/ProductDetailsPage.css";
@@ -24,7 +25,7 @@ const ProductDetailsPage = () => {
         const fetchProduct = async () => {
             try {
                 // FIX: Remove spaces in endpoint
-                const response = await axios.get(`/api/products/${id}`);
+                const response = await axios.get(`${API}/products/${id}`);
                 setProduct(response.data);
             } catch (error) {
                 console.error("Failed to fetch product details", error);

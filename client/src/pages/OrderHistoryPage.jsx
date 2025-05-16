@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/OrderHistoryPage.css"; // Create this file
+import { API } from "../utils/api.js"
 import { useNavigate } from "react-router-dom";
 
 const OrderHistoryPage = () => {
@@ -13,7 +14,7 @@ const OrderHistoryPage = () => {
         const fetchOrders = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("https://codeshapeitsolutions.onrender.com/api/orders", {
+                const res = await axios.get(`${API}/orders`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setOrders(res.data);

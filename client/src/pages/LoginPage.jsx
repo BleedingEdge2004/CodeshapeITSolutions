@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom"; // Add Link for routing
+import { API } from "../utils/api.js"
 import "../styles/AuthPage.css";
 
 const LoginPage = () => {
@@ -29,7 +30,7 @@ const LoginPage = () => {
         setLoading(true);
 
         try {
-            const { data } = await axios.post("/api/auth/login", formData);
+            const { data } = await axios.post(`${API}/auth/login`, formData);
             localStorage.setItem("token", data.token); // Store token
             navigate("/");
         } catch (err) {

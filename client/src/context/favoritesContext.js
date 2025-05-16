@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { API } from "../utils/api.js"
 
 // Create context object
 const FavoritesContext = createContext();
@@ -27,7 +28,7 @@ export const FavoritesProvider = ({ children }) => {
             if (!token) return;
 
             try {
-                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/favorites`, {
+                const res = await axios.get(`${API}/user/favorites`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setFavorites(Array.isArray(res.data) ? res.data : []);
@@ -49,7 +50,7 @@ export const FavoritesProvider = ({ children }) => {
 
         try {
             const res = await axios.post(
-                `${process.env.REACT_APP_API_URL}/api/user/favorites`,
+                `${API}/user/favorites`,
                 { productId: product._id },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
@@ -66,7 +67,7 @@ export const FavoritesProvider = ({ children }) => {
 
         try {
             const res = await axios.delete(
-                `${process.env.REACT_APP_API_URL}/api/user/favorites/${productId}`,
+                `${API}/user/favorites/${productId}`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             setFavorites(Array.isArray(res.data) ? res.data : []);
@@ -85,7 +86,7 @@ export const FavoritesProvider = ({ children }) => {
 
         try {
             const res = await axios.post(
-                `${process.env.REACT_APP_API_URL}/api/user/favorites`,
+                `${API}/user/favorites`,
                 { productId: product._id },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

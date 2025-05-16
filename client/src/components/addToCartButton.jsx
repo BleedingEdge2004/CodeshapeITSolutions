@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCart } from '../context/cartContext.js';
 import axios from 'axios';
+import { API } from "../utils/api.js"
 
 const AddToCartButton = ({ productId }) => {
     const { dispatch } = useCart();
@@ -9,7 +10,7 @@ const AddToCartButton = ({ productId }) => {
         try {
             const token = localStorage.getItem('token');
             const res = await axios.post(
-                `${process.snv.REACT_APP_API_URL}//api/cart/add`,
+                `${API}/cart/add`,
                 { productId },
                 { headers: { Authorization: ` Bearer ${token}` } }
             );

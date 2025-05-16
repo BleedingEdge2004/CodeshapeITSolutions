@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom"; // Add Link
+import { API } from "../utils/api.js"
 import "../styles/AuthPage.css";
 
 const RegisterPage = () => {
@@ -30,7 +31,7 @@ const RegisterPage = () => {
         setLoading(true);
 
         try {
-            const { data } = await axios.post("/api/auth/register", formData);
+            const { data } = await axios.post(`${API}/auth/register`, formData);
             localStorage.setItem("token", data.token); // Store token
             navigate("/");
         } catch (err) {
