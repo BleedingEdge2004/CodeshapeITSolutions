@@ -136,9 +136,10 @@ RESTful APIs are used for user authentication, product handling, and order manag
 ![alt text](Final7.jpg)
 #### **User Account Page**
 ![alt text](Final8.jpg)
-🌍 Deployment (Optional)
-Frontend: Vercel 
-Backend: Render 
+
+## 🌍 Deployment
+### Frontend: Vercel 
+### Backend: Render 
 
 ## 👤 Author
 ### SachinKumarYadav
