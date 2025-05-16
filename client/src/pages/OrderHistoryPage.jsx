@@ -13,7 +13,7 @@ const OrderHistoryPage = () => {
         const fetchOrders = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("http://localhost:5000/api/orders", {
+                const res = await axios.get("https://codeshapeitsolutions.onrender.com/api/orders", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setOrders(res.data);

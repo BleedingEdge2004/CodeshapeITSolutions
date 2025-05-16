@@ -19,7 +19,7 @@ const EditProfilePage = () => {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("http://localhost:5000/api/user/profile", {
+                const res = await axios.get("https://codeshapeitsolutions.onrender.com/api/user/profile", {
                     headers: { Authorization: `Bearer ${ token }` },
         });
     setFormData(res.data);
@@ -40,7 +40,7 @@ const handleSave = async (e) => {
     e.preventDefault();
     try {
         const token = localStorage.getItem("token");
-        await axios.put("http://localhost:5000/api/user/profile", formData, {
+        await axios.put("https://codeshapeitsolutions.onrender.com/api/user/profile", formData, {
             headers: { Authorization: `Bearer ${ token }` },
 });
 alert("Profile updated successfully!");
