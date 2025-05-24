@@ -99,7 +99,7 @@ Server Side
 •Categories
 
 ## 🚀 Setup Instructions
-1. Clone the Repository
+#### 1. Clone the Repository
 
 bash
 
@@ -114,7 +114,7 @@ OR
 cd client //For frontend folder
 
 
-2. Install Backend Dependencies
+#### 2. Install Backend Dependencies
 
 bash
 
@@ -124,7 +124,7 @@ cd server
 
 npm install
 
-3. Create .env in /server
+#### 3. Create .env in /server
 
 ini
 
@@ -136,7 +136,7 @@ MONGO_URI=mongodb+srv://skyslk2964:1234asdf1234@cluster0.fldtrj6.mongodb.net/?re
 
 JWT_SECRET=yadavkumarsachin
 
-4. Start Backend Server
+#### 4. Start Backend Server
 
 bash
 
@@ -148,7 +148,7 @@ or use:
 
 npx nodemon server.js
 
-5. Install Frontend Dependencies
+#### 5. Install Frontend Dependencies
 
 bash
 
@@ -158,7 +158,7 @@ cd ../client
 
 npm install
 
-6. Start Frontend
+#### 6. Start Frontend
 
 bash
 
@@ -168,11 +168,11 @@ npm start
 
 
 ## 🌐 Usage
-Frontend:https://codeshape-it-solutions-ufze.vercel.app/
+### Frontend:https://codeshape-it-solutions-ufze.vercel.app/
 
-Backend API: https://codeshapeitsolutions.onrender.com
+### Backend API: https://codeshapeitsolutions.onrender.com
 
-RESTfull APIs are used for user authentication, product handling, and order management.
+##### RESTfull APIs are used for user authentication, product handling, and order management.
 
 ## 📸 Screenshots
 #### **HomePage**
