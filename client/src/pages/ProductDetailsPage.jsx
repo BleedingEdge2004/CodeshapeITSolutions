@@ -40,7 +40,9 @@ const ProductDetailsPage = () => {
         const token = localStorage.getItem("token");
 
         if (!token) {
-            // User not logged in → redirect to login
+            /**
+             * User not logged in → redirect to log in
+             */
             navigate("/login");
             return;
         }
