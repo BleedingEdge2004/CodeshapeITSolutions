@@ -1,5 +1,5 @@
 /* Wrapper around full product detail layout */
-.product-detail-page {
+.product-details-page {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Centers horizontally */
